@@ -13,7 +13,7 @@ elif(uniqueResponse == 2):
   print(userInput + " " + userInput + " " + userInput + " " + userInput + " " + userInput)
 
 elif(uniqueResponse == 3):
-  print(("Your input was... " + userInput)[::-1])
+  print(("Your input was... " + userInput)[::-1])#reverses text
 
 elif(uniqueResponse == 4):
   print("The random number was " + str(uniqueResponse))
