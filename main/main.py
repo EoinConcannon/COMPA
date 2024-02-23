@@ -1,4 +1,5 @@
 import numpy
+import consoleColour as cc
 
 print("COMPA:What is your name?")
 userInput = input("You:")
@@ -10,5 +11,5 @@ print("COMPA:type \"exit\" to stop the program\n")
 while(userInput != "exit"):
     userInput = input("You:")
     userInput = userInput.lower()#converts to lowercase
-    print("COMPA:" + userInput)
+    print(cc.ct.WARNING + "COMPA:" + cc.ct.ENDC +  userInput)
 
