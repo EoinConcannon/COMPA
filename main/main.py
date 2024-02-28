@@ -1,4 +1,7 @@
 import numpy
+import difflib
+import random
+import json
 
 print("COMPA:What is your name?")
 userInput = input("You:")
@@ -11,3 +14,4 @@ while(userInput != "exit"):
     userInput = input("You:")
     userInput = userInput.lower()#converts to lowercase
     print("COMPA:" +  userInput)
+
