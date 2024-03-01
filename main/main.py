@@ -3,13 +3,15 @@ import difflib
 import random
 import json
 
-greeting = '["Hello", "Hi", "Howdy", "Hello :)", "Hallo"]'
-greet = json.dumps(greeting)
-#print(greet)
+greeting = '{"greetings": ["Hello", "Hi", "Howdy", "Hello :)", "Hallo"]}'
+greet = json.loads(greeting)
+#print(greet['greetings'])
 
 def processInput(userInput):
-    x = print(difflib.get_close_matches(userInput, greet))
+    x = difflib.get_close_matches(userInput, greet['greetings'], 2, 0.5)
     y = ''.join(x)
+    if(y == ""):
+        y = "no response"
     return y
 
 print("COMPA:What is your name?")
@@ -22,4 +24,5 @@ print("COMPA:type \"exit\" to stop the program\n")
 while(userInput != "exit"):
     userInput = input("You:")
     userInput = userInput.lower()#converts to lowercase
-    print("COMPA:" + processInput(userInput))
+    botResponse = processInput(userInput)
+    print("COMPA:" + botResponse)
