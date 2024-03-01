@@ -3,15 +3,17 @@ import difflib
 import random
 import json
 
-greeting = '{"greetings": ["Hello", "Hi", "Howdy", "Hello :)", "Hallo"]}'
-greet = json.loads(greeting)
-#print(greet['greetings'])
+compare = '{"compareReq": ["compare", "difference", "different", "differentiate", "contrast", "between"], "response": ["res1", "res2", "res3"]}'
+compareList = json.loads(compare)
+#print(compareList['response'])
 
 def processInput(userInput):
-    x = difflib.get_close_matches(userInput, greet['greetings'], 2, 0.5)
+    x = difflib.get_close_matches(userInput, compareList['compareReq'], 4, 0.6)
     y = ''.join(x)
-    if(y == ""):
-        y = "no response"
+    if(y == ""):#if user input doesn't match word in json "compareReq"
+        y = "what"
+    else:
+        y = random.choice(compareList['response'])#random choices give back random response from "response" in json
     return y
 
 print("COMPA:What is your name?")
