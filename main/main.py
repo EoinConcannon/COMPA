@@ -33,7 +33,11 @@ def compareTech(userInput):
         else:
             ifWord = random.choice(techList['response'])#random choices give back random response from "response" in json
             return ifWord
-    return "I don't understand"
+    print("COMPA:I do not recognize the technologies you have specified...")
+    print("COMPA:Could you tell me more about " )#should get name of tech user input
+    userInput = input("You:")#user inputs more info about said tech
+    return "Thank you for sharing this information with me."
+
 
 #welcome message
 print("COMPA:What is your name?")
@@ -41,9 +45,10 @@ userInput = input("You:")
 print("COMPA:Hello " + userInput + ". I am COMPA, the comparison chatbot.")
 print("COMPA:I am in a very early stage of development right now.")
 print("COMPA:In the future, you will need to input two technologies for me to compare")
-print("COMPA:type \"exit\" to stop the program\n")
+print("COMPA:type \"exit\" to stop the program")
 
 while(userInput != "exit"):
+    print("\nCOMPA:What technologies do you wish to compare?")
     userInput = input("You:")
     userInput = userInput.lower()#converts to lowercase
     userInput = userInput.split()
