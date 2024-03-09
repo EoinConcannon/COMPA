@@ -24,6 +24,10 @@ def processInput(userInput):
     return "I don't understand"
 
 def compareTech(userInput):
+    twoCheck = 0
+    tech1 = ""
+    tech2 = ""
+
     for currentWord in userInput:
         word = difflib.get_close_matches(currentWord, techList['techDatabase'], 4, 0.6)
         ifWord = ''.join(word)
@@ -32,11 +36,28 @@ def compareTech(userInput):
             continue
         else:
             ifWord = random.choice(techList['response'])#random choices give back random response from "response" in json
-            return ifWord
-    print("COMPA:I do not recognize the technologies you have specified...")
-    print("COMPA:Could you tell me more about " )#should get name of tech user input
-    userInput = input("You:")#user inputs more info about said tech
-    return "Thank you for sharing this information with me."
+            #adds a json value to the variable, this is so it can be checked later
+            #create a better system for this later
+            if(twoCheck == 0):
+                tech1 = ifWord
+                twoCheck += 1
+            elif(twoCheck == 1):
+                tech2 = ifWord
+                twoCheck += 1
+    
+    if(twoCheck == 2):
+        #list differences between specified tech
+        print(tech1 + " " + tech2)
+        return "I recognize both tech you have specified"
+    if(twoCheck == 1):
+        #either list what recognized tech has or user adds new tech to database
+        return "I only recognize one technology you have specified"
+    else:
+        #user adds new tech to database
+        print("COMPA:I do not recognize the technologies you have specified...")
+        print("COMPA:Could you tell me more about " )#should get name of tech user input
+        userInput = input("You:")#user inputs more info about said tech
+        return "Thank you for sharing this information with me."
 
 
 #welcome message
