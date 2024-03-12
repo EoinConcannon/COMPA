@@ -3,6 +3,7 @@ import difflib
 import random
 import json
 
+#these two lists will be put into seperate files later
 compareCMD = '{"compareCMD": ["compare", "difference", "different", "differentiate", "contrast", "between"]}'
 compareList = json.loads(compareCMD)
 tech = '{"techDatabase": ["tech1", "tech2", "tech3", "tech4"], "response": ["res1", "res2", "res3"]}'
@@ -10,8 +11,8 @@ tech = '{"techDatabase": ["tech1", "tech2", "tech3", "tech4"], "response": ["res
 techList = json.loads(tech)
 
 def processInput(userInput):
-    for currentWord in userInput:
-        word = difflib.get_close_matches(currentWord, compareList['compareCMD'], 4, 0.6)
+    for currentWord in userInput:#loops through the user's string input
+        word = difflib.get_close_matches(currentWord, compareList['compareCMD'], 4, 0.6)#checks if the current word some what matchs a word in the json
         ifWord = ''.join(word)
         #print(currentWord)#DEBUG
         if(ifWord == ""):#if user input doesn't match word in json "compareCMD"
@@ -24,6 +25,7 @@ def processInput(userInput):
     return "I don't understand"
 
 def compareTech(userInput):
+    #checkers to make sure tech user has input is valid and matches the json
     twoCheck = 0
     tech1 = ""
     tech2 = ""
@@ -38,10 +40,10 @@ def compareTech(userInput):
             ifWord = random.choice(techList['response'])#random choices give back random response from "response" in json
             #adds a json value to the variable, this is so it can be checked later
             #create a better system for this later
-            if(twoCheck == 0):
+            if(twoCheck == 0):#first technology matches
                 tech1 = ifWord
                 twoCheck += 1
-            elif(twoCheck == 1):
+            elif(twoCheck == 1):#second technology matches
                 tech2 = ifWord
                 twoCheck += 1
     
@@ -72,6 +74,6 @@ while(userInput != "exit"):
     print("\nCOMPA:What technologies do you wish to compare?")
     userInput = input("You:")
     userInput = userInput.lower()#converts to lowercase
-    userInput = userInput.split()
+    userInput = userInput.split()#user's input converted to a list
     botResponse = processInput(userInput)
     print("COMPA:" + botResponse)
