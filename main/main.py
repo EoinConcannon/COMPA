@@ -58,15 +58,14 @@ def compareTech(
         print("I only recognize one technology you have specified but not the other")
         print("Could you tell me the name of this technology again?")
         userInput = input("You:")#user inputs the name of the tech again 
-        if (userInput == "no"):#user doesn't want to give the name (won't be added to database)
+        if (userInput == "no"):#user doesn't give the name (won't be added to database)
             return "exiting"
         else:
-#AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-            tech['techDatabase'].append({userInput})#name of tech added to database
-            print(tech) #https://stackoverflow.com/questions/30350450/how-to-add-an-element-to-a-list
+            techList['techDatabase'].append(userInput)#name of tech added to database
+            print(techList)
             print("Can you give me some additional information about this technology?")
             userInput = input("You:")
-            tech["response"] = userInput#description of tech added to database (this will be improved upon after changing how the json is structured)
+            techList["response"] = userInput#description of tech added to database (this will be improved upon after changing how the json is structured)
             return "Thank you for telling me about this new tech"
     else:
         #user adds new tech to database
