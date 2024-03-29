@@ -3,6 +3,8 @@ import difflib
 import random
 import json
 
+#JSONfile = open("testJSON.json")
+
 #these two lists will be put into seperate files later
 compareCMD = '{"compareCMD": ["compare", "difference", "different", "differentiate", "contrast", "between"]}'
 compareList = json.loads(compareCMD)
