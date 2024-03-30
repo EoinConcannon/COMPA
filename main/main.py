@@ -3,14 +3,12 @@ import difflib
 import random
 import json
 
-#JSONfile = open("testJSON.json")
+compareCmds = open("compareCmds.json")
+techDatabase = open("techDatabase.json")
 
-#these two lists will be put into seperate files later
-compareCMD = '{"compareCMD": ["compare", "difference", "different", "differentiate", "contrast", "between"]}'
-compareList = json.loads(compareCMD)
-tech = '{"techDatabase": ["tech1", "tech2", "tech3", "tech4"], "response": ["res1", "res2", "res3"]}'
 #create a better structure for tech JSON e.g. (Tech1: stat1 = 3525, stat2 = 6426) should be easy to work with/display
-techList = json.loads(tech)
+compareList = json.load(compareCmds)
+techList = json.load(techDatabase)
 
 def processInput(
         userInput):
@@ -64,7 +62,7 @@ def compareTech(
             return "exiting"
         else:
             techList['techDatabase'].append(userInput)#name of tech added to database
-            print(techList)
+            #print(techList)
             print("Can you give me some additional information about this technology?")
             userInput = input("You:")
             techList["response"] = userInput#description of tech added to database (this will be improved upon after changing how the json is structured)
