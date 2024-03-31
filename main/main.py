@@ -58,7 +58,7 @@ def compareTech(
         print("I only recognize one technology you have specified but not the other")
         print("Could you tell me the name of this technology again?")
         userInput = input("You:")#user inputs the name of the tech again 
-        if (userInput == "no"):#user doesn't give the name (won't be added to database)
+        if (userInput == "-1"):#user doesn't give the name (won't be added to database)
             return "exiting"
         else:
             techList['techDatabase'].append(userInput)#name of tech added to database
@@ -81,12 +81,13 @@ userInput = input("You:")
 print("COMPA:Hello " + userInput + ". I am COMPA, the comparison chatbot.")
 print("COMPA:I am in a very early stage of development right now.")
 print("COMPA:In the future, you will need to input two technologies for me to compare")
-print("COMPA:type \"exit\" to stop the program")
+print("COMPA:type \"-1\" to stop the program or to CANCEL at anytime in the program")
 
-while(userInput != "exit"):
+while(userInput != "-1"):
     print("\nCOMPA:What technologies do you wish to compare?")
     userInput = input("You:")
-    userInput = userInput.lower()#converts to lowercase
-    userInput = userInput.split()#user's input converted to a list
-    botResponse = processInput(userInput)
-    print("COMPA:" + botResponse)
+    if (userInput != "-1"):
+        userInput = userInput.lower()#converts to lowercase
+        userInput = userInput.split()#user's input converted to a list
+        botResponse = processInput(userInput)
+        print("COMPA:" + botResponse)
