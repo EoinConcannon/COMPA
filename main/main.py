@@ -31,15 +31,20 @@ def compareTech(
     twoCheck = 0
     tech1 = ""
     tech2 = ""
+    ifWord = ""
 
     for currentWord in userInput:
-        word = difflib.get_close_matches(currentWord, techList['techDatabase'], 4, 0.6)
-        ifWord = ''.join(word)
+        for key, value in techDatabase.item():#??????????????????
+            #if key == "name":
+            word = difflib.get_close_matches(currentWord, techList[i]['name'], 4, 0.6)
+            print(word)
+            ifWord = ''.join(word)
+        
         #print(currentWord)#DEBUG
         if (ifWord == ""):#if user input doesn't match word in json "techDatabase"
             continue
         else:
-            ifWord = random.choice(techList['response'])#random choices give back random response from "response" in json
+            ifWord = random.choice(techList[1]['name'])#random choices give back random response from "response" in json
             #adds a json value to the variable, this is so it can be checked later
             #create a better system for this later
             if (twoCheck == 0):#first technology matches
@@ -61,7 +66,7 @@ def compareTech(
         if (userInput == "-1"):#user doesn't give the name (won't be added to database)
             return "exiting"
         else:
-            techList['techDatabase'].append(userInput)#name of tech added to database
+            techList.append(userInput)#name of tech added to database
             #print(techList)
             print("Can you give me some additional information about this technology?")
             userInput = input("You:")
@@ -70,8 +75,8 @@ def compareTech(
     else:
         #user adds new tech to database
         print("COMPA:I do not recognize the technologies you have specified...")
-        print("COMPA:Could you tell me more about " )#should get name of tech user input
-        userInput = input("You:")#user inputs more info about said tech
+        print("COMPA:Could you tell me more about both of them" )#should get name of tech user input
+        #userInput = input("You:")#user inputs more info about said tech
         return "Thank you for sharing this information with me."
 
 
@@ -89,5 +94,6 @@ while(userInput != "-1"):
     if (userInput != "-1"):
         userInput = userInput.lower()#converts to lowercase
         userInput = userInput.split()#user's input converted to a list
+        print(techList) #unlabelled json python / https://realpython.com/python-dicts/
         botResponse = processInput(userInput)
         print("COMPA:" + botResponse)

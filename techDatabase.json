@@ -1,8 +1,15 @@
-{
-    "techDatabase": [
-        "tech1", "tech2", "tech3", "tech4"
-    ],
-    "response": [
-        "res1", "res2", "res3"
-    ]
-}
+[
+    {
+        "name": "tech1",
+        "date": "01/01/2000",
+        "stat1": "one",
+        "stat2": "two"
+    },
+
+    {
+        "name": "tech2",
+        "date": "01/01/2001",
+        "stat1": "three",
+        "stat2": "four"
+    }
+]
