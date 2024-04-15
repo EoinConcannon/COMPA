@@ -1,15 +1,17 @@
-[
-    {
-        "name": "tech1",
-        "date": "01/01/2000",
-        "stat1": "one",
-        "stat2": "two"
-    },
+{
+    "tech": [
+        {
+            "name": "tech1",
+            "date": "01/01/2000",
+            "stat1": "one",
+            "stat2": "two"
+        },
 
-    {
-        "name": "tech2",
-        "date": "01/01/2001",
-        "stat1": "three",
-        "stat2": "four"
-    }
-]
+        {
+            "name": "tech2",
+            "date": "01/01/2001",
+            "stat1": "three",
+            "stat2": "four"
+        }
+    ]
+}
