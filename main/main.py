@@ -58,19 +58,28 @@ def compareTech(userInput):
         
     if (twoCheck == 2):
         #list differences between specified tech
-        print(tech1)
-        print(tech2)
+        #improve this later
+        #better definition for what tech COULD be
+        print("\n" + tech1[0] + " was released " + tech1[1] + " while " + tech2[0] + " was release on " + tech2[1])
+        print(tech1[0] + " has " + tech1[2] + " while " + tech2[0] + " has " + tech2[2])
+        print(tech1[0] + " has " + tech1[3] + " while " + tech2[0] + " has " + tech2[3])
         return "I recognize both tech you have specified"
     if (twoCheck == 1):
         #either list what recognized tech has or user adds new tech to database
-        print("I only recognize one technology you have specified but not the other")
-        print("Could you tell me the name of this technology again?")
+        #add a delay to each print?
+        print("I only recognize " + tech1[0] + " but not the other technology you specified")
+        print("Would you like me to list the properties of " + tech1[0])
+        print("Or could you tell me more about the other technology you specified?")
         userInput = input("You:")#user inputs the name of the tech again 
         if (userInput == "-1"):#user doesn't give the name (won't be added to database)
             return "exiting"
         else:
+            print("Could you tell me the name of this technology again?")
+            userInput = input("You:")
             #techList.append(userInput)#name of tech added to database
             #print(techList)
+            print("Could you give me the date of when it was released?")
+            userInput = input("You:")
             print("Can you give me some additional information about this technology?")
             userInput = input("You:")
             #techList["response"] = userInput#description of tech added to database (this will be improved upon after changing how the json is structured)
