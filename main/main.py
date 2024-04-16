@@ -4,10 +4,18 @@ import random
 import json
 
 compareCmds = open("compareCmds.json")
+listCmds = open("listCmds.json")
 techDatabase = open("techDatabase.json")
 
 compareDict = json.load(compareCmds)
+listDict = json.load(listCmds)
 techDict = json.load(techDatabase)
+
+def listValues(tech):
+    print("\n" + tech[0] + " was released " + tech[1])
+    print(tech[0] + " has " + tech[2])
+    print(tech[0] + " has " + tech[3])
+    return ""
 
 def processInput(userInput):
     for currentWord in userInput:#loops through the user's string input
@@ -72,7 +80,10 @@ def compareTech(userInput):
         print("Or could you tell me more about the other technology you specified?")
         userInput = input("You:")#user inputs the name of the tech again 
         if (userInput == "-1"):#user doesn't give the name (won't be added to database)
-            return "exiting"
+            return "exiting" #do something about this
+        elif (difflib.get_close_matches(userInput, listDict['listCMD'], 4, 0.6)):
+            listValues(tech1)
+            return ""
         else:
             print("Could you tell me the name of this technology again?")
             userInput = input("You:")
