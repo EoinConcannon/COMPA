@@ -11,6 +11,15 @@ compareDict = json.load(compareCmds)
 listDict = json.load(listCmds)
 techDict = json.load(techDatabase)
 
+#add to json file
+def addToDatabase(newObj, filename='techDatabase.json'):
+    with open(filename,'r+') as file:
+        filedata = json.load(file)
+        filedata["tech"].append(newObj)
+        file.seek(0)
+        json.dump(filedata, file, indent = 4)
+
+#list object values
 def listValues(tech):
     print("\n" + tech[0] + " was released " + tech[1])
     print(tech[0] + " has " + tech[2])
@@ -87,12 +96,31 @@ def compareTech(userInput):
         else:
             print("Could you tell me the name of this technology again?")
             userInput = input("You:")
-            #techList.append(userInput)#name of tech added to database
-            #print(techList)
+            userInput = userInput.lower() #user input is converted to lower case
+            tech2.append(userInput) #add a loop to prevent duplicate names
             print("Could you give me the date of when it was released?")
             userInput = input("You:")
+            tech2.append(userInput)
             print("Can you give me some additional information about this technology?")
             userInput = input("You:")
+            userInput = userInput.lower()
+            tech2.append(userInput)
+            print("Can you give me one final piece of information about this technology?")
+            userInput = input("You:")
+            userInput = userInput.lower()
+            tech2.append(userInput)
+
+            #creating object to append to file
+            jsonObj = {
+                        "name":tech2[0],
+                        "date": tech2[1],
+                        "stat1": tech2[2],
+                        "stat2": tech2[3]
+                      }
+            
+            addToDatabase(jsonObj)
+            techDict["tech"].append(jsonObj)
+
             #techList["response"] = userInput#description of tech added to database (this will be improved upon after changing how the json is structured)
             return "Thank you for telling me about this new tech"
     else:

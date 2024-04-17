@@ -6,26 +6,29 @@
             "stat1": "one",
             "stat2": "two"
         },
-
         {
             "name": "tech2",
             "date": "01/01/2001",
             "stat1": "three",
             "stat2": "four"
         },
-
         {
             "name": "tech3",
             "date": "01/01/2021",
             "stat1": "test1",
             "stat2": "test2"
         },
-
         {
             "name": "tech4",
             "date": "01/01/2011",
             "stat1": "hello",
             "stat2": "goodbye"
+        },
+        {
+            "name": "mynewtech",
+            "date": "19/2/1997",
+            "stat1": "sampletext",
+            "stat2": "info"
         }
     ]
 }
