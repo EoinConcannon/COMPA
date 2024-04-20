@@ -40,39 +40,29 @@ def processInput(userInput):
     return "COMPA:I don't understand"
 
 def compareTech(userInput):
-    #checkers to make sure tech user has input is valid and matches the json
+    #twoCheck ensures that tech user has input is valid and matches the json
     twoCheck = 0
     tech1 = []
     tech2 = []
 
     for currentWord in userInput:
         for techItem in techDict["tech"]:
-            for key, value in techItem.items(): #change this after 1.0 release
-                ifWord = ""
-                if (key != "name"):
-                    continue
-
-                if (currentWord == value):#if user's input matches the key's name value
-                    ifWord = value #better way of doing this (relating to check)
-                    
-                if (ifWord == ""):#if user input doesn't match word in json "techDatabase"
-                    continue
-                else:
-                    #ifWord = random.choice()#random choices give back random response from "response" in json
-                    #adds a json value to a list, this is so it can be used for comparison
-                    if (twoCheck == 0):#first technology matches
-                        tech1.append(ifWord)
-                        tech1.append(techItem["date"])
-                        tech1.append(techItem["stat1"])
-                        tech1.append(techItem["stat2"])
-                        twoCheck += 1
-                    elif (twoCheck == 1):#second technology matches
-                        tech2.append(ifWord)
-                        tech2.append(techItem["date"])
-                        tech2.append(techItem["stat1"])
-                        tech2.append(techItem["stat2"])
-                        twoCheck += 1
-        
+            if (currentWord == techItem["name"]):#if user's input matches the key's name value
+                if (twoCheck == 0):#first technology matches
+                    tech1.append(techItem["name"])
+                    tech1.append(techItem["date"])
+                    tech1.append(techItem["stat1"])
+                    tech1.append(techItem["stat2"])
+                    twoCheck += 1
+                elif (twoCheck == 1):#second technology matches
+                    tech2.append(techItem["name"])
+                    tech2.append(techItem["date"])
+                    tech2.append(techItem["stat1"])
+                    tech2.append(techItem["stat2"])
+                    twoCheck += 1
+            else: #if user input doesn't match word in json "techDatabase"
+                continue
+           
     if (twoCheck == 2):
         #list differences between specified tech
         #improve this later
