@@ -1,4 +1,3 @@
-import numpy
 import difflib
 import random
 import json
@@ -65,15 +64,12 @@ def compareTech(userInput):
            
     if (twoCheck == 2):
         #list differences between specified tech
-        #improve this later
-        #better definition for what tech COULD be
         print("\nCOMPA:" + tech1[0] + " was released " + tech1[1] + " while " + tech2[0] + " was release on " + tech2[1])
         print("COMPA:" + tech1[0] + " has " + tech1[2] + " while " + tech2[0] + " has " + tech2[2])
         print("COMPA:" + tech1[0] + " has " + tech1[3] + " while " + tech2[0] + " has " + tech2[3])
         return "I recognize both tech you have specified"
     if (twoCheck == 1):
         #either list what recognized tech has or user adds new tech to database
-        #add a delay to each print?
         print("COMPA:I only recognize " + tech1[0] + " but not the other technology you specified")
         print("COMPA:Would you like me to list the properties of " + tech1[0])
         print("COMPA:Or could you tell me more about the other technology you specified?")
@@ -111,13 +107,12 @@ def compareTech(userInput):
             addToDatabase(jsonObj)
             techDict["tech"].append(jsonObj)
 
-            #techList["response"] = userInput#description of tech added to database (this will be improved upon after changing how the json is structured)
             return "COMPA:Thank you for telling me about this new tech"
     else:
         #user adds new tech to database
         print("COMPA:I do not recognize the technologies you have specified...")
         print("COMPA:Could you tell me more about both of them" )#should get name of tech user input
-        #userInput = input("You:")#user inputs more info about said tech
+        userInput = input("You:")#user inputs more info about said tech
         return "Thank you for sharing this information with me."
 
 
