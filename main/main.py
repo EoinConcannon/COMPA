@@ -2,12 +2,10 @@ import difflib
 import random
 import json
 
-compareCmds = open("compareCmds.json")
-listCmds = open("listCmds.json")
+commands = open("commands.json")
 techDatabase = open("techDatabase.json")
 
-compareDict = json.load(compareCmds)
-listDict = json.load(listCmds)
+commandDict = json.load(commands)
 techDict = json.load(techDatabase)
 
 #add to json file
@@ -27,7 +25,7 @@ def listValues(tech):
 
 def processInput(userInput):
     for currentWord in userInput:#loops through the user's string input
-        word = difflib.get_close_matches(currentWord, compareDict['compareCMD'], 4, 0.6)#checks if the current word some what matchs a word in the json
+        word = difflib.get_close_matches(currentWord, commandDict['compare'], 4, 0.6)#checks if the current word some what matchs a word in the json
         ifWord = ''.join(word)
         if (ifWord == ""):#if user input doesn't match word in json "compareCMD"
             continue
@@ -76,7 +74,7 @@ def compareTech(userInput):
         userInput = input("You:")#user inputs the name of the tech again 
         if (userInput == "-1"):#user doesn't give the name (won't be added to database)
             return "exiting" #do something about this
-        elif (difflib.get_close_matches(userInput, listDict['listCMD'], 4, 0.6)):
+        elif (difflib.get_close_matches(userInput, commandDict['list'], 4, 0.6)):
             listValues(tech1)
             return ""
         else:
@@ -131,4 +129,4 @@ while(userInput != "-1"):
         userInput = userInput.lower()#converts to lowercase
         userInput = userInput.split()#user's input converted to a list
         botResponse = processInput(userInput)
-        print("COMPA:" + botResponse)
+        print("COMPA:" + botResponse)#check on this later

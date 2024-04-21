@@ -1,5 +1,9 @@
 {
-    "compareCMD": [
+    "compare": [
         "compare", "difference", "different", "differentiate", "contrast", "between"
+    ],
+
+    "list": [
+        "list", "show"
     ]
 }
