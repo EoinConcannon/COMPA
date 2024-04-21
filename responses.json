@@ -1,0 +1,28 @@
+{
+    "listRes": [
+        {
+            "dateRes": [
+                " was released on ",
+                " made its debut on ",
+                " was created in ",
+                " was introduced in "
+            ],
+            "statRes": [
+                " has ",
+                " makes use of ",
+                " utilises "
+            ]
+        }
+    ],
+
+    "compareRes": [
+        {
+            "dateRes": [
+                " SAMPLE TEXT "
+            ],
+            "statRes": [
+                " SAMPLE TEXT "
+            ]
+        }
+    ]
+}

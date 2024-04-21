@@ -1,11 +1,14 @@
 import difflib
+import time
 import random
 import json
 
 commands = open("commands.json")
+responses = open("responses.json")
 techDatabase = open("techDatabase.json")
 
 commandDict = json.load(commands)
+resDict = json.load(responses)
 techDict = json.load(techDatabase)
 
 #add to json file
@@ -18,9 +21,9 @@ def addToDatabase(newObj, filename='techDatabase.json'):
 
 #list object values
 def listValues(tech):
-    print("\nCOMPA:" + tech[0] + " was released " + tech[1])
-    print("COMPA:" + tech[0] + " has " + tech[2])
-    print("COMPA:" + tech[0] + " has " + tech[3])
+    print("\nCOMPA:" + tech[0] + random.choice(resDict['listRes'][0]['dateRes']) + tech[1])
+    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['statRes']) + tech[2])
+    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['statRes']) + tech[3])
     return ""
 
 def processInput(userInput):
