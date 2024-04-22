@@ -1,13 +1,12 @@
 {
     "listRes": [
         {
-            "dateRes": [
-                " was released on ",
-                " made its debut on ",
-                " was created in ",
-                " was introduced in "
+            "proRes": [
+                " has ",
+                " makes use of ",
+                " utilises "
             ],
-            "statRes": [
+            "conRes": [
                 " has ",
                 " makes use of ",
                 " utilises "

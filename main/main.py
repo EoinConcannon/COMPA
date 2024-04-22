@@ -21,9 +21,8 @@ def addToDatabase(newObj, filename='techDatabase.json'):
 
 #list object values
 def listValues(tech):
-    print("\nCOMPA:" + tech[0] + random.choice(resDict['listRes'][0]['dateRes']) + tech[1])
-    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['statRes']) + tech[2])
-    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['statRes']) + tech[3])
+    print("\nCOMPA:" + tech[0] + random.choice(resDict['listRes'][0]['proRes']) + tech[1])
+    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['conRes']) + tech[2])
     return ""
 
 def processInput(userInput):
@@ -50,24 +49,21 @@ def compareTech(userInput):
             if (currentWord == techItem["name"]):#if user's input matches the key's name value
                 if (twoCheck == 0):#first technology matches
                     tech1.append(techItem["name"])
-                    tech1.append(techItem["date"])
-                    tech1.append(techItem["stat1"])
-                    tech1.append(techItem["stat2"])
+                    tech1.append(techItem["pro"])
+                    tech1.append(techItem["con"])
                     twoCheck += 1
                 elif (twoCheck == 1):#second technology matches
                     tech2.append(techItem["name"])
-                    tech2.append(techItem["date"])
-                    tech2.append(techItem["stat1"])
-                    tech2.append(techItem["stat2"])
+                    tech2.append(techItem["pro"])
+                    tech2.append(techItem["con"])
                     twoCheck += 1
             else: #if user input doesn't match word in json "techDatabase"
                 continue
            
     if (twoCheck == 2):
         #list differences between specified tech
-        print("\nCOMPA:" + tech1[0] + " was released " + tech1[1] + " while " + tech2[0] + " was release on " + tech2[1])
+        print("COMPA:" + tech1[0] + " has " + tech1[1] + " while " + tech2[0] + " has " + tech2[1])
         print("COMPA:" + tech1[0] + " has " + tech1[2] + " while " + tech2[0] + " has " + tech2[2])
-        print("COMPA:" + tech1[0] + " has " + tech1[3] + " while " + tech2[0] + " has " + tech2[3])
         return "I recognize both tech you have specified"
     if (twoCheck == 1):
         #either list what recognized tech has or user adds new tech to database
@@ -85,14 +81,11 @@ def compareTech(userInput):
             userInput = input("You:")
             userInput = userInput.lower() #user input is converted to lower case
             tech2.append(userInput) #add a loop to prevent duplicate names
-            print("COMPA:Could you give me the date of when it was released?")
-            userInput = input("You:")
-            tech2.append(userInput)
-            print("COMPA:Can you give me some additional information about this technology?")
+            print("COMPA:Can you give me one advantage this technology has?")
             userInput = input("You:")
             userInput = userInput.lower()
             tech2.append(userInput)
-            print("COMPA:Can you give me one final piece of information about this technology?")
+            print("COMPA:Can you give me one disadvantage this technology suffers from?")
             userInput = input("You:")
             userInput = userInput.lower()
             tech2.append(userInput)
@@ -100,9 +93,8 @@ def compareTech(userInput):
             #creating object to append to file
             jsonObj = {
                         "name":tech2[0],
-                        "date": tech2[1],
-                        "stat1": tech2[2],
-                        "stat2": tech2[3]
+                        "pro": tech2[1],
+                        "con": tech2[2],
                       }
             
             addToDatabase(jsonObj)
