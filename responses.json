@@ -2,25 +2,31 @@
     "listRes": [
         {
             "proRes": [
+                " is good at ",
+                " makes good use of ",
                 " has ",
                 " makes use of ",
-                " utilises "
+                " is great at ",
+                " excels at "
             ],
             "conRes": [
+                " is bad at ",
                 " has ",
-                " makes use of ",
-                " utilises "
+                " struggles with "
             ]
         }
     ],
 
     "compareRes": [
         {
-            "dateRes": [
-                " SAMPLE TEXT "
+            "proRes": [
+                " is better "
             ],
-            "statRes": [
-                " SAMPLE TEXT "
+            "conRes": [
+                " is worse "
+            ],
+            "equalRes": [
+                " both have "
             ]
         }
     ]

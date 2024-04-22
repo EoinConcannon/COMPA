@@ -29,7 +29,7 @@ def processInput(userInput):
     for currentWord in userInput:#loops through the user's string input
         word = difflib.get_close_matches(currentWord, commandDict['compare'], 4, 0.6)#checks if the current word some what matchs a word in the json
         ifWord = ''.join(word)
-        if (ifWord == ""):#if user input doesn't match word in json "compareCMD"
+        if (ifWord == ""):#if user input doesn't match word in json "commands"
             continue
         else:
             #stops reading list here
@@ -64,6 +64,8 @@ def compareTech(userInput):
         #list differences between specified tech
         print("COMPA:" + tech1[0] + " has " + tech1[1] + " while " + tech2[0] + " has " + tech2[1])
         print("COMPA:" + tech1[0] + " has " + tech1[2] + " while " + tech2[0] + " has " + tech2[2])
+        print("COMPA:" + tech1[0] + " is better at " + tech1[2] + " than " + tech2[0])
+        #EDIT THESE WITH responses.json
         return "I recognize both tech you have specified"
     if (twoCheck == 1):
         #either list what recognized tech has or user adds new tech to database
