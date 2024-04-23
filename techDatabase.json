@@ -1,34 +1,29 @@
 {
     "tech": [
         {
-            "name": "tech1",
-            "pro": "one",
-            "con": "two"
+            "name": "java",
+            "pro": "stat1",
+            "con": "bad"
         },
         {
-            "name": "tech2",
-            "pro": "three",
-            "con": "four"
+            "name": "javascript",
+            "pro": "stat2",
+            "con": "stat1"
         },
         {
-            "name": "tech3",
-            "pro": "test1",
-            "con": "test2"
+            "name": "javax",
+            "pro": "stat1",
+            "con": "bad"
         },
         {
-            "name": "tech4",
-            "pro": "hello",
-            "con": "goodbye"
+            "name": "typescript",
+            "pro": "stat8",
+            "con": "horrible"
         },
         {
-            "name": "mynewtech",
-            "pro": "sampletext",
-            "con": "info"
-        },
-        {
-            "name": "newjsontest",
-            "pro": "easier too work with",
-            "con": "only has three keys"
+            "name": "python",
+            "pro": "bad",
+            "con": "stat5"
         }
     ]
 }

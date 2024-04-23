@@ -20,13 +20,26 @@
     "compareRes": [
         {
             "proRes": [
-                " is better "
+                " is better at "
             ],
             "conRes": [
-                " is worse "
+                " is worse at "
             ],
-            "equalRes": [
-                " both have "
+            "equalGoodRes": [
+                " both have ",
+                " both utilise "
+            ],
+            "equalBadRes": [
+                " both have ",
+                " both suffer from ",
+                " are bad at "
+            ],
+            "noSimilarityRes": [
+                " don't have any similar pros or cons.",
+                " don't have much in common.",
+                " have nothing in common.",
+                " are too different.",
+                " show no similarities."
             ]
         }
     ]

@@ -25,6 +25,33 @@ def listValues(tech):
     print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['conRes']) + tech[2])
     return ""
 
+#compares the differences between the two technologies
+def displayingDifferences(tech1, tech2):
+    listValues(tech1)
+    listValues(tech2)
+    similarityCheck = 0
+    getNameDiff = difflib.SequenceMatcher(None, tech1[0], tech2[0])
+    getNameRatio = getNameDiff.ratio()
+
+    if(getNameRatio >= 0.5):#if both tech have a similar name
+        print("\nCOMPA:" + tech1[0] + " and " + tech2[0] + " have similar names.")
+        similarityCheck += 1
+    if(tech1[1] == tech2[2]):#if a pro in tech1 is found in tech2 cons
+        print("COMPA:" + tech1[0] + random.choice(resDict['compareRes'][0]['proRes']) + tech1[1] + " than " + tech2[0])
+        similarityCheck += 1
+    if(tech1[2] == tech2[1]):#if a con in tech1 is found in tech2 pros
+        print("COMPA:" + tech1[0] + random.choice(resDict['compareRes'][0]['conRes']) + tech1[2] + " than " + tech2[0])
+        similarityCheck += 1
+    if(tech1[1] == tech2[1]):#pro both tech have
+        print("COMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['equalGoodRes']) + tech1[1])
+        similarityCheck += 1
+    if(tech1[2] == tech2[2]):#if a pro in tech1 is found in tech2 cons
+        print("COMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['equalBadRes']) + tech1[2])
+        similarityCheck += 1
+    if(similarityCheck > 0):#no pros or cons or similarities found
+        print("COMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['noSimilarityRes']))
+    return ""
+
 def processInput(userInput):
     for currentWord in userInput:#loops through the user's string input
         word = difflib.get_close_matches(currentWord, commandDict['compare'], 4, 0.6)#checks if the current word some what matchs a word in the json
@@ -62,11 +89,8 @@ def compareTech(userInput):
            
     if (twoCheck == 2):
         #list differences between specified tech
-        print("COMPA:" + tech1[0] + " has " + tech1[1] + " while " + tech2[0] + " has " + tech2[1])
-        print("COMPA:" + tech1[0] + " has " + tech1[2] + " while " + tech2[0] + " has " + tech2[2])
-        print("COMPA:" + tech1[0] + " is better at " + tech1[2] + " than " + tech2[0])
-        #EDIT THESE WITH responses.json
-        return "I recognize both tech you have specified"
+        displayingDifferences(tech1, tech2)
+        return ""
     if (twoCheck == 1):
         #either list what recognized tech has or user adds new tech to database
         print("COMPA:I only recognize " + tech1[0] + " but not the other technology you specified")
@@ -126,4 +150,4 @@ while(userInput != "-1"):
         userInput = userInput.lower()#converts to lowercase
         userInput = userInput.split()#user's input converted to a list
         botResponse = processInput(userInput)
-        print("COMPA:" + botResponse)#check on this later
+        print(botResponse)#check on this later
