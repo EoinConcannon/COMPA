@@ -2,26 +2,31 @@
     "tech": [
         {
             "name": "java",
+            "desc": "java desc",
             "pro": "stat1",
             "con": "bad"
         },
         {
             "name": "javascript",
+            "desc": "javascript desc",
             "pro": "stat2",
             "con": "stat1"
         },
         {
             "name": "javax",
+            "desc": "javax desc",
             "pro": "stat1",
             "con": "bad"
         },
         {
             "name": "typescript",
+            "desc": "typescript desc",
             "pro": "stat8",
             "con": "horrible"
         },
         {
             "name": "python",
+            "desc": "python desc",
             "pro": "bad",
             "con": "stat5"
         }

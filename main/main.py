@@ -21,8 +21,10 @@ def addToDatabase(newObj, filename='techDatabase.json'):
 
 #list object values
 def listValues(tech):
-    print("\nCOMPA:" + tech[0] + random.choice(resDict['listRes'][0]['proRes']) + tech[1])
-    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['conRes']) + tech[2])
+    print("\nCOMPA:" + tech[0])#show name
+    print("COMPA:" + tech[1])#show description
+    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['proRes']) + tech[2])#show pros
+    print("COMPA:" + tech[0] + random.choice(resDict['listRes'][0]['conRes']) + tech[3])#show cons
     return ""
 
 #compares the differences between the two technologies
@@ -36,20 +38,20 @@ def displayingDifferences(tech1, tech2):
     if(getNameRatio >= 0.5):#if both tech have a similar name
         print("\nCOMPA:" + tech1[0] + " and " + tech2[0] + " have similar names.")
         similarityCheck += 1
-    if(tech1[1] == tech2[2]):#if a pro in tech1 is found in tech2 cons
-        print("COMPA:" + tech1[0] + random.choice(resDict['compareRes'][0]['proRes']) + tech1[1] + " than " + tech2[0])
+    if(tech1[2] == tech2[3]):#if a pro in tech1 is found in tech2 cons
+        print("\nCOMPA:" + tech1[0] + random.choice(resDict['compareRes'][0]['proRes']) + tech1[2] + " than " + tech2[0])
         similarityCheck += 1
-    if(tech1[2] == tech2[1]):#if a con in tech1 is found in tech2 pros
-        print("COMPA:" + tech1[0] + random.choice(resDict['compareRes'][0]['conRes']) + tech1[2] + " than " + tech2[0])
+    if(tech1[3] == tech2[2]):#if a con in tech1 is found in tech2 pros
+        print("\nCOMPA:" + tech1[0] + random.choice(resDict['compareRes'][0]['conRes']) + tech1[3] + " than " + tech2[0])
         similarityCheck += 1
-    if(tech1[1] == tech2[1]):#pro both tech have
-        print("COMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['equalGoodRes']) + tech1[1])
+    if(tech1[2] == tech2[2]):#pro both tech have
+        print("\nCOMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['equalGoodRes']) + tech1[2])
         similarityCheck += 1
-    if(tech1[2] == tech2[2]):#if a pro in tech1 is found in tech2 cons
-        print("COMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['equalBadRes']) + tech1[2])
+    if(tech1[3] == tech2[3]):#if a pro in tech1 is found in tech2 cons
+        print("\nCOMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['equalBadRes']) + tech1[3])
         similarityCheck += 1
-    if(similarityCheck > 0):#no pros or cons or similarities found
-        print("COMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['noSimilarityRes']))
+    if(similarityCheck == 0):#no pros or cons or similarities found
+        print("\nCOMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['noSimilarityRes']))
     return ""
 
 def createNewData(tech):
@@ -57,6 +59,9 @@ def createNewData(tech):
     userInput = input("You:")
     userInput = userInput.lower() #user input is converted to lower case
     tech.append(userInput) #add a loop to prevent duplicate names
+    print("COMPA:Can you give a brief description of this technology.")
+    userInput = input("You:")
+    tech.append(userInput)#description is not converted to lower case
     print("COMPA:Can you give me one advantage this technology has?")
     userInput = input("You:")
     userInput = userInput.lower()
@@ -69,8 +74,9 @@ def createNewData(tech):
     #creating object to append to file
     jsonObj = {
                 "name":tech[0],
-                "pro": tech[1],
-                "con": tech[2],
+                "desc":tech[1],
+                "pro": tech[2],
+                "con": tech[3],
               }
             
     addToDatabase(jsonObj)
@@ -101,11 +107,13 @@ def compareTech(userInput):
             if (currentWord == techItem["name"]):#if user's input matches the key's name value
                 if (twoCheck == 0):#first technology matches
                     tech1.append(techItem["name"])
+                    tech1.append(techItem["desc"])
                     tech1.append(techItem["pro"])
                     tech1.append(techItem["con"])
                     twoCheck += 1
                 elif (twoCheck == 1):#second technology matches
                     tech2.append(techItem["name"])
+                    tech2.append(techItem["desc"])
                     tech2.append(techItem["pro"])
                     tech2.append(techItem["con"])
                     twoCheck += 1
@@ -118,8 +126,8 @@ def compareTech(userInput):
         return ""
     if (twoCheck == 1):
         #either list what recognized tech has or user adds new tech to database
-        print("COMPA:I only recognize " + tech1[0] + " but not the other technology you specified")
-        print("COMPA:Would you like me to list the properties of " + tech1[0])
+        print("COMPA:I only recognize " + tech1[0] + " but not the other technology you specified.")
+        print("COMPA:Would you like me to list the properties of " + tech1[0] + ".")
         print("COMPA:Or could you tell me more about the other technology you specified?")
         userInput = input("You:")#user inputs the name of the tech again 
         if (userInput == "-1"):#user doesn't give the name (won't be added to database)
