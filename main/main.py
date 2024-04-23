@@ -52,6 +52,32 @@ def displayingDifferences(tech1, tech2):
         print("COMPA:" + tech1[0] + " and " + tech2[0] + random.choice(resDict['compareRes'][0]['noSimilarityRes']))
     return ""
 
+def createNewData(tech):
+    print("COMPA:Could you tell me the name of this technology again?")
+    userInput = input("You:")
+    userInput = userInput.lower() #user input is converted to lower case
+    tech.append(userInput) #add a loop to prevent duplicate names
+    print("COMPA:Can you give me one advantage this technology has?")
+    userInput = input("You:")
+    userInput = userInput.lower()
+    tech.append(userInput)
+    print("COMPA:Can you give me one disadvantage this technology suffers from?")
+    userInput = input("You:")
+    userInput = userInput.lower()
+    tech.append(userInput)
+
+    #creating object to append to file
+    jsonObj = {
+                "name":tech[0],
+                "pro": tech[1],
+                "con": tech[2],
+              }
+            
+    addToDatabase(jsonObj)
+    techDict["tech"].append(jsonObj)
+
+    return ""
+
 def processInput(userInput):
     for currentWord in userInput:#loops through the user's string input
         word = difflib.get_close_matches(currentWord, commandDict['compare'], 4, 0.6)#checks if the current word some what matchs a word in the json
@@ -59,8 +85,7 @@ def processInput(userInput):
         if (ifWord == ""):#if user input doesn't match word in json "commands"
             continue
         else:
-            #stops reading list here
-            #moves into next function
+            #stops reading list here and moves into next function
             ifWord = compareTech(userInput)
             return ifWord
     return "COMPA:I don't understand"
@@ -103,37 +128,18 @@ def compareTech(userInput):
             listValues(tech1)
             return ""
         else:
-            print("COMPA:Could you tell me the name of this technology again?")
-            userInput = input("You:")
-            userInput = userInput.lower() #user input is converted to lower case
-            tech2.append(userInput) #add a loop to prevent duplicate names
-            print("COMPA:Can you give me one advantage this technology has?")
-            userInput = input("You:")
-            userInput = userInput.lower()
-            tech2.append(userInput)
-            print("COMPA:Can you give me one disadvantage this technology suffers from?")
-            userInput = input("You:")
-            userInput = userInput.lower()
-            tech2.append(userInput)
-
-            #creating object to append to file
-            jsonObj = {
-                        "name":tech2[0],
-                        "pro": tech2[1],
-                        "con": tech2[2],
-                      }
-            
-            addToDatabase(jsonObj)
-            techDict["tech"].append(jsonObj)
-
+            createNewData(tech2)
             return "COMPA:Thank you for telling me about this new tech"
     else:
         #user adds new tech to database
-        print("COMPA:I do not recognize the technologies you have specified...")
-        print("COMPA:Could you tell me more about both of them" )#should get name of tech user input
-        userInput = input("You:")#user inputs more info about said tech
-        return "Thank you for sharing this information with me."
-
+        print("COMPA:I do not recognize any of the technologies you have specified...")
+        print("COMPA:Could you tell me more about one of them?")
+        userInput = input("You:")
+        if(userInput == "-1"):
+            return ""
+        else:
+            createNewData(tech1)
+            return "COMPA:Thank you for sharing this information with me."
 
 #welcome message
 print("COMPA:What is your name?")
