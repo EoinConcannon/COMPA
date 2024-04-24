@@ -4,6 +4,14 @@
     ],
 
     "list": [
-        "list", "show"
+        "list", "show", "display"
+    ],
+
+    "yes": [
+        "yes", "sure", "okay", "affirmative"
+    ],
+
+    "no": [
+        "no", "nope", "negative", "don't"
     ]
 }

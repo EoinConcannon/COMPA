@@ -3,13 +3,12 @@ import time
 import random
 import json
 
-commands = open("commands.json")
-responses = open("responses.json")
-techDatabase = open("techDatabase.json")
-
-commandDict = json.load(commands)
-resDict = json.load(responses)
-techDict = json.load(techDatabase)
+with open("commands.json") as commands:
+    commandDict = json.load(commands)
+with open("responses.json") as responses:
+    resDict = json.load(responses)
+with open("techDatabase.json") as techDatabase:
+    techDict = json.load(techDatabase)
 
 #add to json file
 def addToDatabase(newObj, filename='techDatabase.json'):
@@ -84,7 +83,7 @@ def createNewData(tech):
 
     return ""
 
-def processInput(userInput):
+def processUserInput(userInput):
     for currentWord in userInput:#loops through the user's string input
         word = difflib.get_close_matches(currentWord, commandDict['compare'], 4, 0.6)#checks if the current word some what matchs a word in the json
         ifWord = ''.join(word)
@@ -130,9 +129,9 @@ def compareTech(userInput):
         print("COMPA:Would you like me to list the properties of " + tech1[0] + ".")
         print("COMPA:Or could you tell me more about the other technology you specified?")
         userInput = input("You:")#user inputs the name of the tech again 
-        if (userInput == "-1"):#user doesn't give the name (won't be added to database)
-            return "exiting" #do something about this
-        elif (difflib.get_close_matches(userInput, commandDict['list'], 4, 0.6)):
+        if (difflib.get_close_matches(userInput, commandDict['no'], 4, 0.6)) or (userInput == "-1"):#user doesn't give the name (won't be added to database)
+            return ""
+        elif (difflib.get_close_matches(userInput, commandDict['yes'] + commandDict['list'], 4, 0.6)):
             listValues(tech1)
             return ""
         else:
@@ -143,7 +142,7 @@ def compareTech(userInput):
         print("COMPA:I do not recognize any of the technologies you have specified...")
         print("COMPA:Could you tell me more about one of them?")
         userInput = input("You:")
-        if(userInput == "-1"):
+        if (difflib.get_close_matches(userInput, commandDict['no'], 4, 0.6)) or (userInput == "-1"):
             return ""
         else:
             createNewData(tech1)
@@ -155,13 +154,14 @@ userInput = input("You:")
 print("COMPA:Hello " + userInput + ". I am COMPA, the comparison chatbot.")
 print("COMPA:I am still in my development stage right now.")
 print("COMPA:Please give me the names of two technologies and I will compare them.")
-print("COMPA:type \"-1\" to stop the program or to CANCEL at anytime in the program")
+print("COMPA:type \"-1\" to exit the program or to CANCEL a process at anytime in the program")
 
 while(userInput != "-1"):
     print("\nCOMPA:What technologies do you wish to compare?")
     userInput = input("You:")
     if (userInput != "-1"):
-        userInput = userInput.lower()#converts to lowercase
-        userInput = userInput.split()#user's input converted to a list
-        botResponse = processInput(userInput)
-        print(botResponse)#check on this later
+        userInput = userInput.lower().split()#converts to lowercase and each word is put into a list
+        botResponse = processUserInput(userInput)
+        print(botResponse)
+    else:
+        break
