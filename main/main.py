@@ -74,21 +74,23 @@ def createNewData(tech):
     userInput = input("You:")
     tech.append(userInput)#description is not converted to lower case
     print("COMPA:Can you give me an advantage this technology has?")
+    userInput = input("You:")
     while True:#checks if the current word some what matchs a word in the json)
-        userInput = input("You:")
         userInput = userInput.lower()
         emptyList.append(userInput)
         print("COMPA:Any other advantages?")
+        userInput = input("You:")
         if(difflib.get_close_matches(userInput, commandDict['no'], 4, 0.6)) or difflib.get_close_matches(userInput, commandDict['stop'], 4, 0.6) or (userInput == "-1"):
             tech.append(emptyList)
             break
     emptyList = [] #reusing the list
     print("COMPA:Can you give me one disadvantage this technology suffers from?")
+    userInput = input("You:")
     while True:
-        userInput = input("You:")
         userInput = userInput.lower()
         emptyList.append(userInput)
         print("COMPA:Any other disadvantages?")
+        userInput = input("You:")
         if(difflib.get_close_matches(userInput, commandDict['no'], 4, 0.6)) or difflib.get_close_matches(userInput, commandDict['stop'], 4, 0.6) or (userInput == "-1"):
             tech.append(emptyList)
             break
