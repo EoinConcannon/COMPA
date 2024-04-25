@@ -13,5 +13,9 @@
 
     "no": [
         "no", "nope", "negative", "don't"
+    ],
+
+    "stop": [
+        "stop", "enough", "quit"
     ]
 }

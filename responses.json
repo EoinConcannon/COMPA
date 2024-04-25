@@ -4,15 +4,19 @@
             "proRes": [
                 " is good at ",
                 " makes good use of ",
-                " has ",
+                " has a strong ",
                 " makes use of ",
                 " is great at ",
-                " excels at "
+                " excels at ",
+                " is ",
+                " is known for "
             ],
             "conRes": [
                 " is bad at ",
-                " has ",
-                " struggles with "
+                " encounters challenges with ",
+                " struggles with ",
+                " is ",
+                " lacks "
             ]
         }
     ],
@@ -20,19 +24,23 @@
     "compareRes": [
         {
             "proRes": [
-                " is better at "
+                " is better at ",
+                " excels in "
             ],
             "conRes": [
-                " is worse at "
+                " is worse at ",
+                " struggles with "
             ],
             "equalGoodRes": [
                 " both have ",
-                " both utilise "
+                " both utilise ",
+                " both have strengths in "
             ],
             "equalBadRes": [
                 " both have ",
                 " both suffer from ",
-                " are bad at "
+                " are bad at ",
+                " both are lacking in "
             ],
             "noSimilarityRes": [
                 " don't have any similar pros or cons.",
