@@ -65,11 +65,19 @@ def displayingDifferences(tech1, tech2):
 
 def createNewData(tech):
     emptyList = []
-
     print("COMPA:Could you tell me the name of this technology again?")
-    userInput = input("You:")
-    userInput = userInput.lower() #user input is converted to lower case
-    tech.append(userInput) #add a loop to prevent duplicate names
+    while True:#checks if the current word some what matchs a word in the json
+        duplicateCheck = 0
+        userInput = input("You:")
+        userInput = userInput.lower() #user input is converted to lower case
+        for techName in techDict["tech"]:
+            if(userInput == techName["name"]):
+                duplicateCheck = 1
+                print("COMPA:I already have information on a technology named " + techName["name"])
+                print("COMPA:Could you give me a different name?")
+        if(duplicateCheck == 0):
+            tech.append(userInput)
+            break
     print("COMPA:Can you give a brief description of this technology.")
     userInput = input("You:")
     tech.append(userInput)#description is not converted to lower case
